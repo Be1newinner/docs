@@ -352,12 +352,6 @@ getProfile(@GetUser() user) {
 
 ---
 
-Great question, Vijay! 🙌
-**Interceptors vs Middleware** is one of the most common points of confusion — even for experienced developers.
-
-Let me break this down clearly and deeply with **use-case comparison**, **execution flow**, and **a mental model** so you think like a Senior NestJS engineer.
-
----
 
 ## 🔍 Quick Comparison
 
