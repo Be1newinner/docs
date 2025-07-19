@@ -1,3 +1,8 @@
+## *Create a nest app*
+
+* $ npm i -g @nestjs/cli
+* $ nest new project-name
+
 ## ✅ 1. **Controllers**
 
 Controllers handle **incoming HTTP requests** and return **responses** to the client.
