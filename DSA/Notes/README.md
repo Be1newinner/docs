@@ -2,7 +2,7 @@
 
 ---
 
-#### **Part 1: Foundational Data Structures & Their Associated Algorithms/Problems**
+#### **Module 1: Foundational Data Structures & Their Associated Algorithms/Problems**
 
 1.  **Arrays (Python Lists)**
     * Core Concepts
@@ -110,11 +110,11 @@
         * Course Schedule (Medium)
         * Rotting Oranges (Medium)
         * Pacific Atlantic Water Flow (Medium)
-#### **Part 2: Essential Algorithms & General Problem-Solving Techniques (Cross-Cutting)**
+#### **Module 2: Essential Algorithms & General Problem-Solving Techniques (Cross-Cutting)**
 
 This section covers algorithms and techniques that are often applied across various data structures, or represent a general approach to problem-solving.
 
-1.  **Sorting Algorithms**
+9.  **Sorting Algorithms**
     * Concepts (Comparison vs. Non-Comparison, Stability)
     * Merge Sort ($O(N \log N)$)
     * Quick Sort ($O(N \log N)$ average)
@@ -126,7 +126,7 @@ This section covers algorithms and techniques that are often applied across vari
         * K Closest Points to Origin (Medium)
         * Meeting Rooms II (Medium)
 
-2.  **Binary Search**
+10.  **Binary Search**
     * Core Concepts (Iterative/Recursive)
     * Binary Search Variants (First/Last Occurrence, on Answer/Properties)
     * **Handling Large Inputs / Constraints**
@@ -136,7 +136,7 @@ This section covers algorithms and techniques that are often applied across vari
         * Sqrt(x) (Easy)
         * Koko Eating Bananas (Medium)
 
-3.  **Recursion & Backtracking**
+11.  **Recursion & Backtracking**
     * Core Concepts (Base Cases, Call Stack, Choice/Explore/Unchoose)
     * Backtracking Paradigm
     * Python 3.11 Implementation
@@ -148,7 +148,7 @@ This section covers algorithms and techniques that are often applied across vari
         * Generate Parentheses (Medium)
         * N-Queens (Hard - *conceptual for SDE1*)
 
-4.  **Dynamic Programming (DP)**
+12.  **Dynamic Programming (DP)**
     * Core Concepts (Overlapping Subproblems, Optimal Substructure)
     * Memoization (Top-Down)
     * Tabulation (Bottom-Up)
@@ -162,7 +162,7 @@ This section covers algorithms and techniques that are often applied across vari
         * Word Break (Medium)
         * Edit Distance (Hard - *conceptual for SDE1*)
 
-5.  **Greedy Algorithms**
+13.  **Greedy Algorithms**
     * Core Concepts (Local vs. Global Optimum, When Applicable)
     * **Handling Large Inputs / Constraints**
     * **Recommended LeetCode Problems:**
@@ -171,7 +171,7 @@ This section covers algorithms and techniques that are often applied across vari
         * Gas Station (Medium)
         * Activity Selection Problem (Classic)
 
-6.  **Advanced Graph Algorithms (Conceptual for SDE1, Focus on intuition)**
+14.  **Advanced Graph Algorithms (Conceptual for SDE1, Focus on intuition)**
     * Dijkstra's Algorithm (Single-Source Shortest Path - Non-Negative Weights)
     * Floyd-Warshall Algorithm (All-Pairs Shortest Path)
     * Minimum Spanning Tree (Kruskal's, Prim's)
@@ -181,7 +181,16 @@ This section covers algorithms and techniques that are often applied across vari
         * Number of Provinces (Medium) - *Union-Find or DFS/BFS*
         * Network Delay Time (Medium) - *Dijkstra's*
 
-7.  **Bit Manipulation (Basic)**
+15.  **Advanced Recursion Backtracking**
+    * Deeper Insights into State Management
+    * Advanced Pruning Techniques
+    * Relationship with State-Space Search
+    * Python 3.11 Implementation Nuances
+    * Handling Large Inputs / Constraints (Revisited)
+    * Typical FAANG Problem Example
+    * System Design Relevance
+
+16.  **Bit Manipulation (Basic)**
     * Core Operations (`&`, `|`, `^`, `~`, `<<`, `>>`)
     * Use Cases (Space Optimization, Flags, Specific Problem Types)
     * **Handling Large Inputs / Constraints**
