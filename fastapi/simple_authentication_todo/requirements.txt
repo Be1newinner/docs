@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+sqlalchemy==2.0.30  # Latest stable as of July 2025 (adjust if newer stable is out)
+asyncpg              # PostgreSQL async driver for SQLAlchemy
+pydantic==2.8.2      # Latest stable Pydantic
+python-dotenv        # For environment variable management
+passlib[bcrypt]      # For password hashing
+python-jose[cryptography] # For JWTs
+alembic              # For database migrations
+email-validator      # For email format validation
+
+# Optional for development/testing:
+pytest
+httpx # For async API testing
