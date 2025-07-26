@@ -16,15 +16,25 @@ datasource db {
 
 //  WE WILL CODE BELOW THIS LINE
 
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+enum GenderType {
+  MALE
+  FEMALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
 
-  roles  Role   @relation(fields: [roleId], references: [id])
+model User {
+  id        String      @id @default(uuid())
+  email     String      @unique @db.VarChar(255)
+  password  String
+  isActive  Boolean     @default(true)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  name      String?      @db.VarChar(100)
+  gender    GenderType?
+  phone     String?     @db.VarChar(20)
+
+  role   Role   @relation(fields: [roleId], references: [id])
   roleId String
 
   @@map("users")
