@@ -1,7 +1,3 @@
-To set up **Prisma in NestJS**, the clean and production-ready way (used in FAANG-style backend apps), follow this structured guide.
-
----
-
 ## ✅ Goal
 
 Integrate Prisma ORM into your **NestJS v11+** app with:
@@ -167,17 +163,6 @@ async function bootstrap() {
 }
 bootstrap();
 ```
-
----
-
-### ✅ Summary
-
-Now you have a production-ready Prisma setup:
-
-* Type-safe DB access
-* Centralized PrismaService
-* Global module for easy injection
-* Shutdown handling for Docker/k8s
 
 ---
 

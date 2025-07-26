@@ -51,7 +51,7 @@
     cd nestjs-prisma-pg-app
     npm install @nestjs/config @nestjs/jwt @nestjs/mongoose @nestjs/platform-express @nestjs/swagger class-validator class-transformer bcrypt jsonwebtoken zod
     # Add Prisma
-    npm install prisma @prisma/client
+    npm install prisma @prisma/clientnpm i --save-dev @types/class-validator
     npx prisma init --datasource-provider postgresql
     # Clean up mongoose if not needed, as per your preference for Prisma for RDBMS
     npm uninstall @nestjs/mongoose mongoose
