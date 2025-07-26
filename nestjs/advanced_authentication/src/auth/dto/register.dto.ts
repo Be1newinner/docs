@@ -43,6 +43,7 @@ export class RegisterDTO {
     description: 'User full name',
     example: 'John Doe',
     type: String,
+    required: false,
   })
   @IsString({ message: 'Name must be a string.' })
   @MinLength(2, { message: 'Name must be at least 2 characters long.' })
@@ -70,6 +71,7 @@ export class RegisterDTO {
     description: 'User phone number (with country code, e.g., +15551234567)',
     example: '+12345678900',
     type: String,
+    required: false,
   })
   @IsPhoneNumber('IN', {
     message:
