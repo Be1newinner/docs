@@ -23,6 +23,11 @@ enum GenderType {
   PREFER_NOT_TO_SAY
 }
 
+enum RoleType {
+  USER
+  ADMIN
+}
+
 model User {
   id        String      @id @default(uuid())
   email     String      @unique @db.VarChar(255)
@@ -30,7 +35,7 @@ model User {
   isActive  Boolean     @default(true)
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
-  name      String?      @db.VarChar(100)
+  name      String?     @db.VarChar(100)
   gender    GenderType?
   phone     String?     @db.VarChar(20)
 
@@ -42,7 +47,7 @@ model User {
 
 model Role {
   id        String   @id @default(uuid())
-  name      String   @unique
+  name      RoleType @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   users     User[]

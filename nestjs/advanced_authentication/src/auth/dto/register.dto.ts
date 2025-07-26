@@ -10,13 +10,7 @@ import {
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
-
-export enum Gender {
-  MALE = 'MALE',
-  FEMALE = 'FEMALE',
-  OTHER = 'OTHER',
-  PREFER_NOT_TO_SAY = 'PREFER_NOT_TO_SAY',
-}
+import { GenderType } from 'generated/prisma';
 
 export class RegisterDTO {
   @ApiProperty({
@@ -58,19 +52,19 @@ export class RegisterDTO {
 
   @ApiProperty({
     description: 'User gender',
-    enum: Gender,
-    example: Gender.MALE,
+    enum: GenderType,
+    example: GenderType.MALE,
     enumName: 'Gender',
     required: false,
   })
-  @IsEnum(Gender, {
+  @IsEnum(GenderType, {
     message:
       'Invalid gender value. Must be one of: ' +
-      Object.values(Gender).join(', ') +
+      Object.values(GenderType).join(', ') +
       '.',
   })
   @IsOptional()
-  gender?: Gender;
+  gender?: GenderType;
 
   @ApiProperty({
     description: 'User phone number (with country code, e.g., +15551234567)',

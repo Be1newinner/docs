@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Gender } from 'src/auth/dto/register.dto';
+import { GenderType, RoleType } from 'generated/prisma';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class UsersService {
     email: string;
     password: string;
     name?: string;
-    gender?: Gender;
+    gender?: GenderType;
     phone?: string;
   }) {
     return this.prisma.user.create({
@@ -30,7 +30,7 @@ export class UsersService {
         phone: data?.phone,
         role: {
           connect: {
-            name: 'user',
+            name: RoleType.USER,
           },
         },
       },

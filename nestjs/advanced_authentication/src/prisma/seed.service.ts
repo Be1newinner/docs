@@ -1,5 +1,6 @@
 import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
+import { RoleType } from 'generated/prisma';
 
 @Injectable()
 export class SeedService implements OnApplicationBootstrap {
@@ -10,18 +11,16 @@ export class SeedService implements OnApplicationBootstrap {
   }
 
   private async seedRoles() {
-    const roles = ['USER', 'ADMIN'];
     return await Promise.all(
-      roles.map((role) =>
-        this.Prisma.role.upsert({
+      Object.keys(RoleType).map((role: RoleType) => {
+        return this.Prisma.role.upsert({
           where: { name: role },
           update: {},
           create: {
             name: role,
-            description: `${role} role`,
           },
-        }),
-      ),
+        });
+      }),
     );
   }
 }
