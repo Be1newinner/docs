@@ -19,7 +19,7 @@ class User(Base):
     email: Mapped[str] = mapped_column(
         String(100), unique=True, index=True, nullable=False
     )
-    hashed_password: Mapped[str] = mapped_column(String(255), nullable=False)
+    password: Mapped[str] = mapped_column(String(255), nullable=False)
     gender: Mapped[str | None] = mapped_column(String(10), nullable=True)
     contact: Mapped[str | None] = mapped_column(String(20), nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
