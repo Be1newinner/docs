@@ -1,10 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.services.user_service import UserService
-
 from app.core.security import verify_password, loginTokens
-
 from pydantic import UUID4
-
 
 class AuthService:
     def __init__(self, db: AsyncSession) -> None:
