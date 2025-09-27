@@ -611,4 +611,8 @@ Useful for describing complex queries or blocks of DDL.
 */
 ```
 
+**RESETING THE SERIAL SEQUNCE ID**
+```sql
+ALTER SEQUENCE RESTART WITH new_value;
+```
   * **Alternatives and Ineffectiveness:** No comments make your code unreadable and difficult to maintain for anyone (including your future self). Proper commenting is a hallmark of professional development.
