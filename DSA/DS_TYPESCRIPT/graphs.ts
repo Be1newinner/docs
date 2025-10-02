@@ -8,12 +8,13 @@ class BiDirectionalGraph implements GraphInterface<number> {
     }
 
     addEdge(vertex1: number, vertex2: number): void {
-        if (vertex1 >= this.data.length) throw new Error("Vertex doesn't exist");
+        if (!this.hasVertex(vertex1) || !this.hasVertex(vertex2)) throw new Error("Vertexes doesn't exist");
         this.data[vertex1].push(vertex2);
+        this.data[vertex2].push(vertex1);
     }
 
     removeVertex(vertex: number): void {
-        if (vertex >= this.data.length) throw new Error("Vertex doesn't exist");
+        if (!this.hasVertex(vertex)) throw new Error("Vertex doesn't exist");
         const edgesLength = this.data[vertex].length;
         this.data[vertex].splice(0, edgesLength);
 
@@ -26,11 +27,13 @@ class BiDirectionalGraph implements GraphInterface<number> {
     }
 
     removeEdge(vertex1: number, vertex2: number): void {
-        if (vertex1 >= this.data.length || vertex2 >= this.data.length) throw new Error("Vertex doesn't exist");
+        if (!this.hasVertex(vertex1) || !this.hasVertex(vertex2)) throw new Error("Vertexes doesn't exist");
+
         const vertex1Idx = this.data[vertex1].indexOf(vertex2);
         if (vertex1Idx >= 0) {
             this.data[vertex1].splice(vertex1Idx, 1)
         }
+
         const vertex2Idx = this.data[vertex2].indexOf(vertex1);
         if (vertex2Idx >= 0) {
             this.data[vertex2].splice(vertex2Idx, 1)
@@ -38,19 +41,20 @@ class BiDirectionalGraph implements GraphInterface<number> {
     }
 
     getNeighbors(vertex: number): number[] {
-
+        if (!this.hasVertex(vertex)) throw new Error("Vertex doesn't exist");
+        return this.data[vertex]
     }
 
     hasVertex(vertex: number): boolean {
-
+        return vertex < this.data.length
     }
 
     hasEdge(vertex1: number, vertex2: number): boolean {
-
+        return this.data.length > Math.max(vertex1, vertex2) && this.data[vertex1].includes(vertex2) && this.data[vertex2].includes(vertex1);
     }
 
     vertices(): number[] {
-
+        return Array.from({ length: this.data.length - 1 }, (_, i) => i)
     }
 
     edges(): [number, number][] {
