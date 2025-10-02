@@ -72,9 +72,10 @@ class deque implements DequeInterface<number> {
     }
 
     removeFront(): number | undefined {
-        if (this.llData?.tail) {
-            const tailVal = this.llData.tail?.val;
-            this.llData?.delete(this.llData.tail?.val)
+        if (this.llData?.isEmpty()) {
+            return undefined;
+        } else {
+            this.llData?.delete();
         }
     }
 

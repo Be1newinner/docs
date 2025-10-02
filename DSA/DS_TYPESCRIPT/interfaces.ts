@@ -7,6 +7,7 @@ export interface StackInterface<T> {
     size(): number;         // get number of items
 }
 
+
 // Queue interface (FIFO)
 export interface QueueInterface<T> {
     enqueue(item: T): void;          // Add to the back

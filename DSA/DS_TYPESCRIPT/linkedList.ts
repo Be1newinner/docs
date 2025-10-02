@@ -167,30 +167,75 @@ export class DoublyLinkedList implements DoublyLinkedListInterface<number> {
     }
 
     deleteBack(): number | null {
-
+        if (this.isEmpty()) {
+            return null;
+        } else {
+            const nodeVal = this.tail!.val;
+            if (this.tail === this.head) {
+                this.tail = this.head = null
+            } else {
+                this.tail = this.tail!.prev;
+                this.tail!.next = null;
+            }
+            return nodeVal;
+        }
     }
 
     deleteFront(): number | null {
-
+        if (this.isEmpty()) {
+            return null;
+        } else {
+            const nodeVal = this.head!.val;
+            if (this.tail === this.head) {
+                this.tail = this.head = null
+            } else {
+                this.head = this.head!.next;
+                this.head!.prev = null;
+            }
+            return nodeVal;
+        }
     }
 
     find(item: number): DoublyListNodeInterface<number> | null {
+        let curr = this.head;
 
+        while (curr != null) {
+            if (curr.val === item) return curr
+            curr = curr.next
+        }
+
+        return null
     }
 
     isEmpty(): boolean {
-
+        return this.head === null;
     }
 
     size(): number {
+        let count = 0;
+        let curr = this.head;
 
+        while (curr != null) {
+            count++;
+            curr = curr.next
+        }
+
+        return count
     }
 
     clear(): void {
-
+        this.head = null
+        this.tail = null
     }
 
     toArray(): number[] {
+        const nodeVals: number[] = [];
+        let curr = this.head;
 
+        while (curr != null) {
+            nodeVals.push(curr.val);
+            curr = curr.next
+        }
+        return nodeVals;
     }
 }
