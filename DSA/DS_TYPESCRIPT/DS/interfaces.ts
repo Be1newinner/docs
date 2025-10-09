@@ -121,3 +121,31 @@ export interface GraphInterface<T> {
     vertices(): T[];
     edges(): Array<[T, T]>;
 }
+
+export interface IHeap<T> {
+    size(): number;
+
+    // Return top element without removal
+    peek(): T | null;
+
+    // Insert new element into heap
+    insert(val: T): void;
+
+    // Remove and return top element
+    extractTop(): T | null;
+
+    // Build heap from unsorted array
+    buildHeap(arr: T[]): void;
+
+    // Update element at given index with new value
+    updateKey(index: number, newVal: T): void;
+
+    // Remove element at specific index
+    remove(index: number): void;
+
+    // Heap sort: Returns sorted array from heap elements
+    heapSort(): T[];
+
+    // Optional for generic heaps: comparator function for custom order
+    comparator?: (a: T, b: T) => number;
+}

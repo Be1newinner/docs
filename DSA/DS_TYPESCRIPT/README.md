@@ -1,170 +1,111 @@
-### What is a Graph?
+# PATTERNS
 
-A **graph** is a data structure that models pairwise relationships between objects (called "vertices" or "nodes") connected by "edges" (links). Think of a city map: intersections are nodes, roads are edges.
+## 1. Prefix Sum
+**What:** Pahele se cumulative sum array bna lo.  
+**Use:** Fast range sum queries; subarray sums without recalculating.  
+**How:** prefix[i] = prefix[i-1] + arr[i]; query = prefix[j] - prefix[i-1].
 
-#### Types of Graphs:
-- **Directed vs. Undirected**: Edges have a direction (like a one-way street) or not (two-way).
-- **Weighted vs. Unweighted**: Edges may have a value (like distance/cost) or all edges are equal.
-- **Cyclic vs. Acyclic**: Whether cycles (loops) are allowed or not.
+## 2. Two Pointers  ( DONE )
+**What:** Do pointer start aur end se aage badhte hain.  
+**Use:** Sorted arrays, pairs, substrings problems.  
+**How:** Ek pointer start, dusra end; move based on condition (sum, comparison).
 
-***
+## 3. Sliding Window  ( DONE )
+**What:** Fixed ya variable size window slide karke problem solve karo.  
+**Use:** Longest/shortest substring/subarray, max sum fixed window.  
+**How:** Expand right pointer, shrink left pointer condition ke hisaab se.
 
-### How do we represent graphs?
+## 4. Fast & Slow Pointers  ( DONE )
+**What:** Fast pointer 2 steps, slow pointer 1 step aage.  
+**Use:** Cycle detection, middle element find karna linked lists mein.  
+**How:** Speed difference se cycle ya meet point detect karo.
 
-The two main ways:
-- **Adjacency List**: For each node, keep a list of connected nodes. Space-efficient if the graph is sparse. *Imagine a phonebook per person with their friends inside*
-- **Adjacency Matrix**: 2D matrix where cell `[i][j]` is `1` (or weight) if there’s an edge from `i` to `j`, else `0`. Fast edge lookup but uses more space for sparse graphs.
+## 5. Linked List In-place Reversal  ( DONE )
+**What:** Pointers ko reverse karke list ulta karo without extra space.  
+**Use:** Reverse a linked list efficiently.  
+**How:** 3 pointers (prev, current, next), link current to prev, move pointers forward.
 
-***
+## 6. Monotonic Stack  
+**What:** Stack maintain karo increasing ya decreasing order mein.  
+**Use:** Next greater/smaller element, histogram problems.  
+**How:** Push with pops to maintain order.
 
-### Graph Methods (Standard Operations)
+## 7. Top K Elements  
+**What:** Find top k largest/smallest/frequent elements efficiently.  
+**Use:** Priority problems, frequency sorting.  
+**How:** Use Min/Max heap of size k for O(n log k).
 
-| Operation           | What it does                                             |
-|---------------------|---------------------------------------------------------|
-| addVertex(node)     | Adds a new node                                         |
-| addEdge(u, v)       | Adds edge between u and v                               |
-| removeVertex(node)  | Removes a node and all its edges                        |
-| removeEdge(u, v)    | Removes an edge                                         |
-| neighbors(node)     | Lists all adjacent nodes                                |
-| hasEdge(u, v)       | Checks if u and v are connected                         |
-| traversal methods   | BFS (Breadth-First), DFS (Depth-First) for searching    |
-| size/numVertices()  | Returns number of nodes                                 |
-| numEdges()          | Returns number of edges                                 |
+## 8. Overlapping Intervals  
+**What:** Intervals ko start time se sort karo, phir merge karo.  
+**Use:** Merge intervals, find conflicts.  
+**How:** If current start ≤ last merged end → merge else new interval.
 
-***
+## 9. Modified Binary Search  
+**What:** Classic BS with tweak to solve rotated arrays, search conditions.  
+**Use:** Search in rotated/special sorted arrays.  
+**How:** Adapt mid check conditions to skip sorted half.
 
-### Graph in TypeScript (Adjacency List Example)
+## 10. Binary Tree Traversal  
+**What:** DFS (In, Pre, Post) or BFS level order.  
+**Use:** Tree processing tasks, path, printing.  
+**How:** Recursion (DFS) or Queue (BFS).
 
-```typescript
-class Graph {
-    private adjList: Map<number, Set<number>> = new Map();
+## 11. Depth First Search (DFS)  
+**What:** Explore depth wise nodes/graph paths using recursion or stack.  
+**Use:** Graph traversal, connected components.  
+**How:** Push neighbours, recurse deep.
 
-    addVertex(v: number): void {
-        if (!this.adjList.has(v)) this.adjList.set(v, new Set());
-    }
+## 12. Breadth First Search (BFS)  
+**What:** Level wise traversal using queue.  
+**Use:** Shortest path unweighted graph, level order.  
+**How:** Enqueue start, dequeue and enqueue neighbours.
 
-    addEdge(u: number, v: number): void {
-        this.addVertex(u);
-        this.addVertex(v);
-        this.adjList.get(u)!.add(v); // Directed, for undirected add both ways
-        // this.adjList.get(v)!.add(u);
-    }
+## 13. Matrix Traversal  
+**What:** Row-column wise matrix traversal.  
+**Use:** Matrix problems like search, path finding.  
+**How:** Nested loops or BFS/DFS on grid.
 
-    removeEdge(u: number, v: number): void {
-        this.adjList.get(u)?.delete(v);
-    }
+## 14. Backtracking  
+**What:** Try all options, undo if wrong (DFS with undo).  
+**Use:** Permutations, subsets, sudoku.  
+**How:** Choose, recurse, unchoose.
 
-    removeVertex(v: number): void {
-        this.adjList.delete(v);
-        for (let neighbors of this.adjList.values()) neighbors.delete(v);
-    }
+## 15. Dynamic Programming  
+**What:** Store results of subproblems to avoid recomputation.  
+**Use:** Optimization problems (knapsack, LCS).  
+**How:** Define state, recurrence; build bottom up or memo top down.
 
-    neighbors(v: number): number[] {
-        return Array.from(this.adjList.get(v) ?? []);
-    }
-}
-```
+## 16. Union Find (Disjoint Set)  
+**What:** Efficiently merge sets and find representatives.  
+**Use:** Connectivity, cycle detection in graph.  
+**How:** Union by rank, path compression.
 
-***
+## 17. Trie (Prefix Tree)  
+**What:** Tree of characters for prefix based queries.  
+**Use:** Auto-complete, word search.  
+**How:** Each node points to next char nodes.
 
-### Real-World Interview Intuition
+## 18. Greedy Algorithms  
+**What:** Choose locally optimal choice at each step.  
+**Use:** Scheduling, interval selection, Huffman coding.  
+**How:** Sort input, pick best immediate choice.
 
-- **Why adjacency list?** Space-efficient for common, sparse graphs (like real-world networks—cities, users, flight routes).
-- **Matrix?** Useful for dense or small graphs, or when you need ultra-fast edge existence checks.
+## 19. Topological Sort  
+**What:** Linear order of DAG nodes with dependencies.  
+**Use:** Job scheduling, course prerequisite order.  
+**How:** DFS postorder or Kahn’s Algorithm (BFS + indegrees).
 
-***
+## 20. Bit Manipulation  
+**What:** Use bitwise ops for fast computation.  
+**Use:** Check bits, power of two, toggles.  
+**How:** &, |, ^, <<, >> etc.
 
-### Graph Types and Real-World Analogy
+## 21. Sliding Window Maximum / Deque  
+**What:** Find max in sliding window with deque to keep max candidates.  
+**Use:** Fast max in subarrays.  
+**How:** Remove out of window & smaller elements for max at front.
 
-| Type                    | Analogy                  | Description                                                     |
-|-------------------------|--------------------------|-----------------------------------------------------------------|
-| Undirected Graph        | Friendship network       | Connections go both ways, no arrow on edges.                    |
-| Directed Graph (Digraph)| Twitter followers        | Each connection (edge) has a direction.                         |
-| Weighted Graph          | Road network             | Each edge has a weight (cost, distance, etc.)                   |
-| Unweighted Graph        | Board games              | All connections are equal, no extra info on edges.              |
-| Cyclic vs. Acyclic      | Travel vs. task scheduler| Cyclic: loops possible; Acyclic: no loops allowed.              |
-
-***
-
-### Graph Implementation Strategies
-
-#### 1. **Adjacency List**
-- **Description:** Each node has a list/set of neighbors.
-- **TypeScript:** Map of node to a Set of adjacent nodes.
-- **Space:** $$O(V+E)$$ — great for sparse graphs.
-- **Edge Lookup:** $$O(k)$$, where $$k$$ is the degree of the node (neighbors count).
-- **Typically Used For:** Real-world graphs with far fewer edges than $$(V^2)$$ (e.g., most social networks, router maps).
-
-#### 2. **Adjacency Matrix**
-- **Description:** 2D Array; matrix[i][j] stores info for edge i → j (1/0 or weight).
-- **Space:** $$O(V^2)$$ — can be very heavy for large or sparse graphs.
-- **Edge Lookup:** $$O(1)$$ — direct access.
-- **Typically Used For:** Small, dense graphs; algorithms needing fast edge existence checks; sometimes used for Floyd-Warshall shortest path.
-
-***
-
-### Directed vs. Undirected Implementation
-
-- **Adjacency List:**
-  - Directed: Only store neighbor in one direction.
-  - Undirected: Store neighbor in both directions.
-
-- **Adjacency Matrix:**
-  - Directed: Asymmetric matrix.
-  - Undirected: Symmetric matrix ($$matrix[i][j] = matrix[j][i]$$).
-
-***
-
-### Weighted Graph Implementation
-
-- **Adjacency List with weights:** Store a Map of neighbors to weights or an array of `[neighbor, weight]`.
-- **Adjacency Matrix:** Cell stores numeric weight or `Infinity`/`null` if absent.
-
-***
-
-### Efficiency Trade-Offs
-
-| Implementation | Pros                       | Cons                                 | Best For                     |
-|----------------|----------------------------|--------------------------------------|------------------------------|
-| List           | Space-efficient, easy traversal| Slower edge lookup ($$O(k)$$)      | Sparse graphs, BFS/DFS search|
-| Matrix         | Fast edge queries ($$O(1)$$)| High space cost, slow to traverse   | Dense graphs, small graphs   |
-
-***
-
-### Examples in TypeScript
-
-**Weighted Adjacency List:**
-```typescript
-class WeightedGraph {
-    private adjList: Map<number, Map<number, number>> = new Map();
-    addVertex(v: number): void {
-        if (!this.adjList.has(v)) this.adjList.set(v, new Map());
-    }
-    addEdge(u: number, v: number, w: number): void {
-        this.addVertex(u);
-        this.addVertex(v);
-        this.adjList.get(u)!.set(v, w);
-    }
-}
-```
-
-**Weighted Adjacency Matrix:**
-```typescript
-class MatrixGraph {
-    private matrix: number[][];
-    constructor(size: number) {
-        this.matrix = Array.from({length: size}, () => Array(size).fill(Infinity));
-    }
-    addEdge(u: number, v: number, w: number): void {
-        this.matrix[u][v] = w; // For undirected, also set [v][u]
-    }
-}
-```
-
-***
-
-### Interview Reflection: Choosing the Right Representation
-
-- **Sparse graph + frequent edge traversal/search:** **Adjacency list** is best.
-- **Need fast edge existence checks + dense graph:** **Adjacency matrix** is best.
-- **Need to store weights:** Pick either, but clearly organize weights per edge.
+## 22. Segment Tree & Fenwick Tree (BIT)  
+**What:** Data structure for fast range queries and updates.  
+**Use:** Range sum/min/max queries dynamic array.  
+**How:** Segment tree binary breaks, Fenwick tree bit tricks.

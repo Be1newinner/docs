@@ -54,10 +54,20 @@ class BiDirectionalGraph implements GraphInterface<number> {
     }
 
     vertices(): number[] {
-        return Array.from({ length: this.data.length - 1 }, (_, i) => i)
+        return Array.from(this.data, (_, i) => i)
     }
 
     edges(): [number, number][] {
+        const edges: [number, number][] = [];
 
+        for (const i in this.data) {
+            for (const j in this.data[i]) {
+                const edge = [Number(i), this.data[i][j]];
+                if (!edges.indexOf([edge[0], edge[1]]) || !edges.includes([edge[1], edge[0]]))
+                    edges.push([Number(i), this.data[i][j]]);
+            }
+        }
+
+        return edges;
     }
 }
