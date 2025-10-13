@@ -1,7 +1,5 @@
 The "Top K Elements" problem is a common and important pattern in data structures usage, typically involving selecting the largest or smallest K elements from a collection of data.
 
-Let's break it down:
-
 ## What is "Top K Elements"?
 
 "Top K Elements" refers to the problem of finding either the K largest or K smallest elements in a dataset efficiently. Instead of sorting the entire dataset, which can be costly, specialized data structures or algorithms help in accessing the top K entries quickly.
@@ -43,9 +41,6 @@ Let's break it down:
 | Array + Sorting           | Static top K once                 | Small array where full sort is affordable        | Sort the array, pick top K                                        |
 | HashMap + Heap            | Top K frequent elements           | Frequent search queries or trending hashtag list | Count frequencies with hashmap, store top K in heap               |
 
-
-
 ## EXTRA
 
 Sometimes, using sorting or a quickselect algorithm (for k-th largest) can be easier to implement quickly and accepted by interviewers as a valid approach.
-
